@@ -6,12 +6,23 @@ tyr is a test generator developed out of the frustration of writing redundant te
 # what is it
 tyr is comprised of 4 elements: 
 
-- `tyr.js`: the test builder
 - `test_template.js`: the test suite template
+
+  this contains [`superagent`](https://github.com/visionmedia/superagent) tests for (in order):
+    - `POST /collection`: create an instance of a resource
+    - `GET /element/:id`: retrieve an instance of a resource
+    - `GET /collection`: retrieve a collection of resources
+    - `PUT /element/:id`: update an instance of a resource
+    - `DELETE /element/:id`: delete an instance of a resource
+  
+- `tyr.js`: the test builder
+  
+  a node script that builds a test file for each resource in the `resources` array in `config.js` using the `test_template.js` 
+
 - `config.js`: array of resources to generate tests for, api-server host, port, namespace
 - `/mocks`: a folder containing a mocks object for every resource to be tested
 
-# how's it work
+# let's do this
 
 ## step 1: build your mocks
 
@@ -62,7 +73,7 @@ because a `book` resource requires an `author_id`, if books were listed first, t
 
 ## step 3: build and run those tests
 
-you're all done! step 1 and 2 are all that's required to get a based set of tests for each resource in your API.
+you're all done! step 1 and 2 are all that's required to get a base set of endpoints tests for each resource in your API.
 
 - build the tests: `node tyr.js`
 - run the tests: `mocha <resource_name>_test.js`
