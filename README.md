@@ -4,8 +4,8 @@ a test generator for API endpoints using mocha and superagent
 tyr is a test generator developed out of the frustration of writing redundant tests for REST APIs. assuming your routes are resource based and follow a convention like [json-api](http://www.json-api.com), tyr will generate a series of mocha/superagent endpoint tests for your API.
 
 examples IRL:
-- [piep](https://github.com/piep/piep-api/tree/master/test)
-- [endpoints-example](https://github.com/endpoints/example/tree/master/test)
+- [piep/piep-api](https://github.com/piep/piep-api/tree/master/test)
+- [endpoints/example](https://github.com/endpoints/example/tree/master/test)
 
 # what is it
 tyr is comprised of 4 elements: 
