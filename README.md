@@ -8,7 +8,7 @@ examples IRL:
 - [endpoints/example](https://github.com/endpoints/example/tree/master/test)
 
 # what is it
-tyr is comprised of 4 elements: 
+tyr is comprised of 5 elements: 
 
 - `test_template.js`: the test suite template
 
