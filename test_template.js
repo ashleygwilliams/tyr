@@ -8,6 +8,7 @@ describe('piep-api server', function(){
   var resource = "<%= resource %>";
   var mock_resource = <%= JSON.stringify(mocks.mock_resource) %>;
   var mock_update = <%= JSON.stringify(mocks.mock_update) %>;
+  var update_attr = <%= JSON.stringify(mocks.update_attr) %>;
 
   var collection_url = config.host + config.port + config.namespace + '/' + resource;
   var id;
@@ -65,6 +66,7 @@ describe('an update happens', function(){
             expect(e).to.eql(null);
             expect(typeof res.body).to.eql('object');
             expect(res.body.id).to.eql(id);
+            expect(res.body[update_attr]).to.eql(mock_update[update_attr]);
             done();
         });
       });
