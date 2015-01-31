@@ -8,7 +8,7 @@ examples IRL:
 - [endpoints/example](https://github.com/endpoints/example/tree/master/test)
 
 # what is it
-tyr is comprised of 4 elements: 
+tyr is comprised of 5 elements: 
 
 - `test_template.js`: the test suite template
 
@@ -25,6 +25,7 @@ tyr is comprised of 4 elements:
 
 - `config.js`: array of resources to generate tests for, api-server host, port, namespace
 - `/mocks`: a folder containing a mocks object for every resource to be tested
+- `db_utils.js`: a utility for reseting your db, requires a database `config` file and a `knexfile`
 
 # let's do this
 
@@ -77,9 +78,27 @@ module.exports = {
 
 because a `book` resource requires an `author_id`, if books were listed first, the `POST` would fail because no `author` resources would exist.
 
-## step 3: build and run those tests
+## step 3: hook up your DB
 
-you're all done! step 1 and 2 are all that's required to get a base set of endpoints tests for each resource in your API.
+in order for the tests to be accurate, it's best we reset our DB before each test. `db_utils.js` has a utility function for doing just this. 
+
+this utility, as it is written in the included file, assumes that you are using [`knex`](http://knexjs.org/) and [`bookshelf`](http://bookshelfjs.org/). at the top of the file, point the constant `DB` to a `require` of your bookshelf config file, and point the constant `config` to a `require` of your `knexfile`.
+
+for example:
+
+```js
+// db_utils.js
+
+const DB = require('../api/classes/database');
+const config = require('../knexfile');
+// .. rest of file
+```
+
+if you are using something different for SQL queries and/or an ORM, simply rewrite the file to export a `reset()` function, as this is all that tyr anticipates. for a closer look: the util is required on [line 15 of `test_template.js`](https://github.com/ashleygwilliams/tyr/blob/master/test_template.js#L5) and the `reset` function is used on [line 18 of `test_template.js`](https://github.com/ashleygwilliams/tyr/blob/master/test_template.js#L18).
+
+## step 4: build and run those tests
+
+you're all done! step 1, 2, and 3 are all that's required to get a base set of endpoints tests for each resource in your API.
 
 - build the tests: `node tyr.js`
 - run the tests: `mocha <resource_name>_test.js`
