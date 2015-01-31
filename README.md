@@ -6,6 +6,12 @@ tyr is a test generator developed out of the frustration of writing redundant en
 examples IRL:
 - [piep/piep-api](https://github.com/piep/piep-api/tree/master/test)
 - [endpoints/example](https://github.com/endpoints/example/tree/master/test)
+ 
+### name? wat?
+
+[Týr is a greek god of law and and heroic glory](http://en.wikipedia.org/wiki/T%C3%BDr). he martyred his hand in battle and we'll use that hand to make sure your API is heroically successful and convention based. 
+
+[Tyr's hand is also a sweet Netrunner card.](http://netrunnerdb.com/en/card/03022)
 
 # what is it
 tyr is comprised of 5 elements: 
