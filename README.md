@@ -21,7 +21,7 @@ tyr is comprised of 4 elements:
   
 - `tyr.js`: the test builder
   
-  a node script that builds a test file for each resource in the `resources` array in `config.js` using the `test_template.js` 
+  a node script that builds a test file for each resource in the `resources` array in `config.js` using the `test_template.js`. each test file is deposited in the same location as `tyr.js` and is named `<resource_name>_test.js`.
 
 - `config.js`: array of resources to generate tests for, api-server host, port, namespace
 - `/mocks`: a folder containing a mocks object for every resource to be tested
