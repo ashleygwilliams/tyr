@@ -1,0 +1,29 @@
+{
+  "name": "tyr-test",
+  "description": "test your REST: a test generator for API endpoints",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ashleygwilliams/tyr",
+  "author": {
+    "name": "ag_dubs",
+    "url": "http://www.twitter.com/ag_dubs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ashleygwilliams/tyr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ashleygwilliams/tyr/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/ashleygwilliams/tyr/blob/master/LICENSE"
+    }
+  ],
+  "dependencies": {
+    "expect.js": "^0.3.1",
+    "mocha": "^2.1.0",
+    "superagent": "^0.21.0",
+    "underscore": "^1.7.0"
+  }
+}
