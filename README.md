@@ -84,6 +84,16 @@ in order for the tests to be accurate, it's best we reset our DB before each tes
 
 this utility, as it is written in the included file, assumes that you are using [`knex`](http://knexjs.org/) and [`bookshelf`](http://bookshelfjs.org/). at the top of the file, point the constant `DB` to a `require` of your bookshelf config file, and point the constant `config` to a `require` of your `knexfile`.
 
+for example:
+
+```js
+// db_utils.js
+
+const DB = require('../api/classes/database');
+const config = require('../knexfile');
+// .. rest of file
+```
+
 if you are using something different for SQL queries and/or an ORM, simply rewrite the file to export a `reset()` function, as this is all that tyr anticipates. for a closer look: the util is required on [line 15 of `test_template.js`](https://github.com/ashleygwilliams/tyr/blob/master/test_template.js#L5) and the `reset` function is used on [line 18 of `test_template.js`](https://github.com/ashleygwilliams/tyr/blob/master/test_template.js#L18).
 
 ## step 4: build and run those tests
