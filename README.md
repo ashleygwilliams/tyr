@@ -57,7 +57,9 @@ exports.mock_update = mock_update;
 
 the `config.js` file in tyr is where you will specify the `host`, `port`, and `namespace` for your API server. 
 
-additionally, and most importantly, this is where you list your resources. you should list your resources as strings in the `resources` array in the correct order according to their relations. this is  critical, as most APIs built on relational databases define the related `resource_id` attribute on a resource as non-nullable. if you put them in the wrong order, and you have related resources, the tests should fail immediately, as the `POST` in the `beforeEach` of the tests will fail.
+additionally, and most importantly, this is where you list your resources. you should list the path to your resources as strings in the `resources` array. tyr assumes that the path points to a folder named after the resource that contains a `model.js` file.
+
+be sure to add your resources in the correct order according to their relations. this is  critical, as most APIs built on relational databases define the related `resource_id` attribute on a resource as non-nullable. if you put them in the wrong order, and you have related resources, the tests should fail immediately, as the `POST` in the `beforeEach` of the tests will fail.
 
 an example:
 
