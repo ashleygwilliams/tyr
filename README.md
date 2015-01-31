@@ -1,7 +1,7 @@
 #tyr: test your REST
-a test generator for API endpoints using mocha and superagent
+a [`node`](http://nodejs.org/) test generator for API endpoints using [`mocha`](http://mochajs.org/) and [`superagent`](https://github.com/visionmedia/superagent)
 
-tyr is a test generator developed out of the frustration of writing redundant tests for REST APIs. assuming your routes are resource based and follow a convention like [json-api](http://www.json-api.com), tyr will generate a series of mocha/superagent endpoint tests for your API.
+tyr is a test generator developed out of the frustration of writing redundant endpoint tests for APIs. if we build using conventions we should be able to use those conventions to mitigate redundancy in our applications, as well as share resources, like tests! assuming your routes are resource based and follow a convention like [json-api](http://www.json-api.com), tyr will generate a series of mocha/superagent endpoint tests for your API.
 
 examples IRL:
 - [piep/piep-api](https://github.com/piep/piep-api/tree/master/test)
@@ -30,7 +30,7 @@ tyr is comprised of 4 elements:
 
 ## step 1: build your mocks
 
-in order to test a POST and a PUT, you will need 2 objects, respectively. when you create a resource for your application, create a file in `/mocks` with the name of the resource. inside this file, export an object with two attributes: `mock_resource` and `mock_update`. these will be required in `tyr.js` and each assigned, respectively, to variables of the same name.
+in order to test a `POST` and a `PUT`, you will need 2 objects, respectively. when you create a resource for your application, create a file in `/mocks` with the name of the resource. inside this file, export an object with two attributes: `mock_resource` and `mock_update`. these will be required in `tyr.js` and each assigned, respectively, to variables of the same name.
 
 for example:
 
@@ -55,7 +55,7 @@ exports.mock_update = mock_update;
 
 ## step 2: configure your test suite
 
-the `config.js` file in tyr is where you will specify the host, port, and namespace for your API server. 
+the `config.js` file in tyr is where you will specify the `host`, `port`, and `namespace` for your API server. 
 
 additionally, and most importantly, this is where you list your resources. you should list your resources as strings in the `resources` array in the correct order according to their relations. this is  critical, as most APIs built on relational databases define the related `resource_id` attribute on a resource as non-nullable. if you put them in the wrong order, and you have related resources, the tests should fail immediately, as the `POST` in the `beforeEach` of the tests will fail.
 
@@ -73,7 +73,7 @@ module.exports = {
 };
 ```
 
-because a `book` resource requires an `author_id`, if books were listed first, the POST would fail because no `author` resources would exist.
+because a `book` resource requires an `author_id`, if books were listed first, the `POST` would fail because no `author` resources would exist.
 
 ## step 3: build and run those tests
 
