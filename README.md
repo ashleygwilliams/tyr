@@ -33,6 +33,8 @@ tyr is comprised of 5 elements:
 
 in order to test a `POST` and a `PUT`, you will need 2 objects, respectively. when you create a resource for your application, create a file in `/mocks` with the name of the resource. inside this file, export an object with two attributes: `mock_resource` and `mock_update`. these will be required in `tyr.js` and each assigned, respectively, to variables of the same name.
 
+the last task here is to set the `update_attr` variable. this variable represents the attribute that is being update between the `mock_resource` and the `mock_update`. this variable should be set as a string. this is important because it determines what the tests will check after the `PUT` test. you can see the code for that here on [line 69 of `test_template.js`](https://github.com/ashleygwilliams/tyr/blob/master/test_template.js#L69).
+
 for example:
 
 ```js
@@ -48,10 +50,12 @@ var mock_update = {
   title: "Spacecats! An astronomical tutorial on building single page web applications with AngularJS",
   date_published: "jan 30 2015"
 };
+var update_attr = "date_published";
 
 
 exports.mock_resource = mock_resource;
 exports.mock_update = mock_update;
+exports.update_attr = update_attr;
 ```
 
 ## step 2: configure your test suite
